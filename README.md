@@ -1,0 +1,2 @@
+# Laboratorio-4
+Procesamiento digital de mediciones via Python o Matlab/Octave. Análisis y procesamiento de imágenes. Análisis de series temporales: transformada de Fourier rápida Análisis de series temporales: demodulado homodino. Ruido en señales eléctricas: propiedades y filtrado. Estimadores de bondad de modelos y ajustes. Conversión analógico digital. Linealidad y calibración de una medición. Medición de posición. Medición de temperatura. Medición de luz.
