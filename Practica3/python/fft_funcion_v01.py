@@ -50,7 +50,7 @@ def MakeSpectralPlot2(y, Fs, fignum=1):
 
 #Ejemplo de plot
     
-t = np.linspace(0, 10, 10000)
+t = np.linspace(0, 10, 30000)
 tstep = max(t)/len(t)
 fsamp = 1/tstep
 
