@@ -1,4 +1,4 @@
-2Mediciones de deflexión de la barra de latón;
+Mediciones de deflexión de la barra de latón;
 .longitud de onda del láser: 404.0nm (incerteza despreciable), puntero azul
 .diametro de la barra de latón: (4.6±0.2)mm
 .distancia de la rendija a la pantalla: (125.0±0.5)cm
