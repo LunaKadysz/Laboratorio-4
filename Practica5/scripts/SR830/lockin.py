@@ -5,7 +5,7 @@ Created on Thu Sep 24 11:54:57 2020
 @author: Publico
 """
 
-import visa
+import pyvisa as visa
 import numpy as np
 import time
 import matplotlib.pyplot as plt

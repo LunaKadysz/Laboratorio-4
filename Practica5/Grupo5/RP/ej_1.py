@@ -34,12 +34,6 @@ tau , orden = rp.get_lpf('ref')
 print(f"El pasabajos para la democulación de X e Y es de orden {orden} y tiempo característico {tau} seg ")
 print(f"La frecuencia de corte es fc={1/(tau*2*np.pi)} Hz ")
 
-#%%
-x,y=rp.get_XY()
-print(x)
-x=float(x)
-print(x)
-#%%
 
 
 X=[]
@@ -47,14 +41,18 @@ Y=[]
 t=[]
 t0=time()
 for i in range (100):
-    x, y = rp.get_XY()
-    t.append(t0-time())
+    sleep(0.01)
+    x, y = rp.get_XY(units='int') / 8192 #le sacamos el offeset
+    t.append(time() - t0)
     X.append(x)
     Y.append(y)
 
 t=np.array(t)
 X=np.array(X)
 Y=np.array(Y)
+
+df = pd.dataframe({'Tiempo': t, 'X': X, 'Y': Y })
+df.to_csv(r'data\data_ej_1.csv')
 
 plt.plot(t,X,label='X')
 plt.plot(t,Y,label='Y')
