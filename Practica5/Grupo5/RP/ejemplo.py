@@ -19,7 +19,7 @@ from control_finn import RedPitayaApp, reg_labels
 # Con esto nos vinculamos a la Red Pitaya
 # PERO LA APP TENEMOS QUE ABRIRLA DESDE EL NAVEGADOR PARA QUE ESTÉ CARGADA!
 
-rp  = RedPitayaApp('http://rp-f00a3b.local/lock_in+pid_harmonic/?type=run', name='rp')
+rp  = RedPitayaApp('http://10.200.1.240/lock_in+pid_harmonic/?type=runn', name='rp')
 
 
 
@@ -58,7 +58,7 @@ Vmod_out2   = rp.get_modulation_amplitud( 'out2' )
 # line='ref' aplica a los armónicos de referencia cos_ref y sin_ref
 # Los valores VAL de pasabajos deben ir de 14 a 29
 # Eso representa un tau = 2**VAL * 8 ns
-rp.set_lpf(16 , order=1 , line='ref' ) 
+rp.set_lpf(20 , order=1 , line='ref' ) 
 
 tau , orden = rp.get_lpf('ref')
 
