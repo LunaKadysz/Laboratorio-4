@@ -28,7 +28,7 @@ rp = RedPitayaApp('http://10.200.1.240/lock_in+pid_harmonic/?type=run', name='rp
 #%%
 
 # NUMERO DE ITERACIONES QUE ESTIMAMSO QU E VAA SER EL TIEMPOD DE RRTA
-it = 100
+it = 50
 
 #frecuenciaas a setear
 frecuencia  = rp.set_freq( 102 ) #PONER LA FRECUENCIAS MAS LINDA
@@ -37,18 +37,17 @@ frecuencia  = rp.set_freq( 102 ) #PONER LA FRECUENCIAS MAS LINDA
 rp.set_lpf(22,order=1 , line='ref' ) 
 
 tau , orden = rp.get_lpf('ref')
-
+#%%
 # seteamos la amplitud temporal para serciorarnos de que la amplitud que fijemos sea distinta a la que estaba antes
 Vmod_out1   = rp.set_modulation_amplitud(1639, ch='out1')
-sleep(0.1)
+sleep(1)
 
 X=[]
 Y=[]
 t=[]
 t0=time()
 
-for i in range(5):
-    sleep(0.1)
+for i in range(10):
     x, y = rp.get_XY(units='int') / 8192 #le sacamos el offeset
     t.append(time() - t0)
     X.append(x)
@@ -57,7 +56,6 @@ for i in range(5):
 Vmod_out1   = rp.set_modulation_amplitud(8190, ch='out1')
 #frecuencia  = rp.set_freq( 122 )
 for i in range (it):
-    sleep(0.1)
     x, y = rp.get_XY(units='int') / 8192 #le sacamos el offeset
     t.append(time() - t0)
     X.append(x)
@@ -158,7 +156,7 @@ Y=[]
 t=[]
 t0=time()
 
-for i in range(5):
+for i in range(10):
     x, y = rp.get_XY(units='int') / 8192 #le sacamos el offeset
     t.append(time() - t0)
     X.append(x)
@@ -174,3 +172,6 @@ for i in range (it):
     
 df = pd.DataFrame({'Tiempo': t, 'X': X, 'Y': Y })
 df.to_csv(r'data\data_ej_5_d.csv')
+#%%
+plt.plot(t,X,'.',label='X')
+plt.plot(t,Y,'.',label='Y')
