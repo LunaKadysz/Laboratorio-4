@@ -70,7 +70,7 @@ for i in range(10):
 
 Vmod_out1   = rp.set_modulation_amplitud(4048, ch='out1')
 
-frecuencias =np.array( np.exp(np.linspace(np.log(1239),np.log(0.0001),100)),dtype='int')
+frecuencias =np.array( np.exp(np.linspace(np.log(1239),np.log(100),300)),dtype='int')
 frecss=[]
 for i,f in enumerate(frecuencias):
     if i<len(frecuencias)-1:
@@ -78,7 +78,7 @@ for i,f in enumerate(frecuencias):
             frecss.append(frecuencias[i])
 
 frecuencias=np.array(frecss)
-
+#%%
 X=[]
 Y=[]
 for i in range(10):
@@ -132,11 +132,12 @@ df.to_csv(r'data/Amps.csv')
 #%%
 Vmod_out1   = rp.set_modulation_amplitud(8190, ch='out1')
 sleep(30)
-
+#%%
 X=[]
 Y=[]
 
-rp.set_lpf(22,order=2 , line='ref' )
+rp.set_lpf(29,order=2 , line='ref' )
+sleep(60)
 tau , orden = rp.get_lpf('ref')
 for f in frecuencias:
     frec  = rp.set_freq( f )
@@ -147,6 +148,12 @@ for f in frecuencias:
 
 X=np.array(X)
 Y=np.array(Y)
+#%%
+plt.semilogx(frecuencias,X**2+Y**2)
+#%%
+df = pd.DataFrame({'frecs': frecuencias, 'X': X, 'Y': Y})
+df.to_csv(r'data/29.csv')
+
 #%%
 Vmod_out1   = rp.set_modulation_amplitud(-1, ch='out1')
 sleep(30)
